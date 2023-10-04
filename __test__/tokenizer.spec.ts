@@ -1,9 +1,9 @@
 import { expect, test } from 'vitest';
-import { tokenizer, TokenTypes } from '../src/tokenizer';
+import { type Token, tokenizer, TokenTypes } from '../src/tokenizer';
 
 test('tokenizer', () => {
   const code = `(add 2 (subtract 4 2))`;
-  const token = [
+  const token: Token[] = [
     { type: TokenTypes.Paren, value: '(' },
     { type: TokenTypes.Name, value: 'add' },
     { type: TokenTypes.Number, value: '2' },
@@ -48,7 +48,7 @@ test('number', () => {
 
 test('(add 1 2)', () => {
   const code = `(add 1 2)`;
-  const token = [
+  const token: Token[] = [
     { type: TokenTypes.Paren, value: '(' },
     { type: TokenTypes.Name, value: 'add' },
     { type: TokenTypes.Number, value: '1' },
