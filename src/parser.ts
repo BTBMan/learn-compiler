@@ -9,7 +9,7 @@ export enum AstTypes {
 interface CallExpression {
   type: AstTypes.CallExpression;
   name: string;
-  params: AstAllTypes[];
+  params: ChildNodes[];
 }
 
 interface NumberLiteral {
@@ -17,11 +17,13 @@ interface NumberLiteral {
   value: string;
 }
 
-type AstAllTypes = CallExpression | NumberLiteral;
+export type ChildNodes = CallExpression | NumberLiteral;
+
+export type Nodes = Ast | ChildNodes;
 
 export interface Ast {
   type: AstTypes.Program;
-  body: AstAllTypes[];
+  body: ChildNodes[];
 }
 
 const createAstNode = (): Ast => {
