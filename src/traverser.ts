@@ -26,16 +26,13 @@ export const traverser = (ast: Ast, visitor: Visitor) => {
 
     switch (node.type) {
       case AstTypes.NumberLiteral:
-        console.log('number: ', node);
         break;
 
       case AstTypes.CallExpression:
-        console.log('callExpression: ', node);
         traverseArray(node.params, node);
         break;
 
       case AstTypes.Program:
-        console.log('program: ', node);
         traverseArray(node.body, node);
         break;
     }
