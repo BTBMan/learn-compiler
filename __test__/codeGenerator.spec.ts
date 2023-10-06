@@ -1,39 +1,8 @@
 import { expect, test } from 'vitest';
-import { type Ast, AstTypes } from '../src/parser';
-import { transformer } from '../src/transformer';
+import { codeGenerator } from '../src/codeGenerator';
 
-test('transformer', () => {
-  const ast: Ast = {
-    type: AstTypes.Program,
-    body: [
-      {
-        type: AstTypes.CallExpression,
-        name: 'add',
-        params: [
-          {
-            type: AstTypes.NumberLiteral,
-            value: '2',
-          },
-          {
-            type: AstTypes.CallExpression,
-            name: 'subtract',
-            params: [
-              {
-                type: AstTypes.NumberLiteral,
-                value: '4',
-              },
-              {
-                type: AstTypes.NumberLiteral,
-                value: '2',
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  };
-
-  const newAst = {
+test('codeGenerator', () => {
+  const node = {
     type: 'Program',
     body: [
       {
@@ -72,5 +41,7 @@ test('transformer', () => {
     ],
   };
 
-  expect(transformer(ast)).toEqual(newAst);
+  const code = 'add(2, subtract(4, 2));';
+
+  expect(codeGenerator(node)).toBe(code);
 });
