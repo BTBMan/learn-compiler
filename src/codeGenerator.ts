@@ -3,7 +3,7 @@ import { AstTypes } from './parser';
 export const codeGenerator = (node) => {
   switch (node.type) {
     case AstTypes.Program:
-      return node.body.map(codeGenerator).join(' ');
+      return node.body.map(codeGenerator).join('\n');
 
     case 'ExpressionStatement':
       return codeGenerator(node.expression) + ';';
