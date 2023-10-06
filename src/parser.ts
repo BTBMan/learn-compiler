@@ -6,13 +6,13 @@ export enum AstTypes {
   NumberLiteral = 'NumberLiteral',
 }
 
-interface CallExpression {
+export interface CallExpression {
   type: AstTypes.CallExpression;
   name: string;
   params: ChildNodes[];
 }
 
-interface NumberLiteral {
+export interface NumberLiteral {
   type: AstTypes.NumberLiteral;
   value: string;
 }

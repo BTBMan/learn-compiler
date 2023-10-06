@@ -1,6 +1,5 @@
 import { expect, test } from 'vitest';
-import { type Token, TokenTypes } from '../src/tokenizer';
-import { type Ast, parser, AstTypes } from '../src/parser';
+import { type Ast, AstTypes } from '../src/parser';
 import { type Visitor, traverser } from '../src/traverser';
 
 test('traverser', () => {
